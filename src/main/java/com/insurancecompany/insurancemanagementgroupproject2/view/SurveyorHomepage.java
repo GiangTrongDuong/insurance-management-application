@@ -101,7 +101,7 @@ public class SurveyorHomepage {
         sortCard.setOnAction(sortByCard);
         refreshData.setOnAction(refreshClaimData);
         logout.setOnAction(logoutClick);
-        surveryorName.setText("Welcome Insurance Surveyor " + LoginData.usernameLogin);
+        surveryorName.setText("Welcome insurance surveyor " + LoginData.usernameLogin);
         //Call API to fetch claim data from database
         fetchClaimData();
     }

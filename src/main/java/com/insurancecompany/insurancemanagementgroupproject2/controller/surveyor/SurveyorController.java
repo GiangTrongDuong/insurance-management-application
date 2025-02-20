@@ -4,7 +4,7 @@ package com.insurancecompany.insurancemanagementgroupproject2.controller.surveyo
  */
 import com.insurancecompany.insurancemanagementgroupproject2.DatabaseConnection;
 import com.insurancecompany.insurancemanagementgroupproject2.constant.ErrorMessage;
-import com.insurancecompany.insurancemanagementgroupproject2.constant.SQLField;
+import com.insurancecompany.insurancemanagementgroupproject2.query.SQLField;
 import com.insurancecompany.insurancemanagementgroupproject2.model.Surveyor;
 import com.insurancecompany.insurancemanagementgroupproject2.query.SQLQueries;
 

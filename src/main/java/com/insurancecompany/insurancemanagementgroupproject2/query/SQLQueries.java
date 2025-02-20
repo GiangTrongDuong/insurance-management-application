@@ -1,6 +1,11 @@
 package com.insurancecompany.insurancemanagementgroupproject2.query;
 
 public class SQLQueries {
+    // Login
+    public static final String FETCH_LOGIN = "SELECT password, role_id FROM users WHERE user_name = ?";
+
+    // Constant for the claim query
+    public static final String QUERY_ALL_CLAIMS = "SELECT * FROM claims";
 
     // Constant for the surveyor query
     public static final String GET_SURVEYOR_QUERY = "SELECT * FROM USER WHERE role_id = 3";

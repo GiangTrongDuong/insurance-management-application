@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
  * @author team 5
  */
 @NoArgsConstructor
-@AllArgsConstructor
 public class PolicyHolder extends User{
+    public PolicyHolder(String id, String fullName, String userName, String password, String email, String phoneNumber, String address, int roleId) {
+    }
 }

@@ -5,6 +5,7 @@ package com.insurancecompany.insurancemanagementgroupproject2.controller;
 import com.insurancecompany.insurancemanagementgroupproject2.DatabaseConnection;
 import com.insurancecompany.insurancemanagementgroupproject2.model.LoginData;
 import com.insurancecompany.insurancemanagementgroupproject2.model.Claim;
+import com.insurancecompany.insurancemanagementgroupproject2.query.SQLQueries;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -128,8 +129,7 @@ public class ClaimController {
             Connection connection = databaseConnection.getConnection();
             ArrayList<Claim> claimList = new ArrayList<>();
             try {
-                String queryClaims = "SELECT * FROM claims";
-                PreparedStatement statement = connection.prepareStatement(queryClaims);
+                PreparedStatement statement = connection.prepareStatement(SQLQueries.QUERY_ALL_CLAIMS);
                 ResultSet resultSet = statement.executeQuery();
                 while (resultSet.next()) {
                     Claim claim = new Claim();

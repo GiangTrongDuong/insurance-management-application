@@ -15,4 +15,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class Dependent extends User{
     private String policyHolderName;
+
+    public Dependent(String id, String fullName, String userName, String password, String email, String phoneNumber, String address, int roleId) {
+    }
 }

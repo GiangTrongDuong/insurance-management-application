@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
  * @author team 5
  */
 @NoArgsConstructor
-@AllArgsConstructor
 public class Surveyor extends User{
     public Surveyor(String id,
                     String fullName,

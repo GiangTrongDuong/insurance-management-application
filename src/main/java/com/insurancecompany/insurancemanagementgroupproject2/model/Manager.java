@@ -7,6 +7,5 @@ import lombok.NoArgsConstructor;
  * @author team 5
  */
 @NoArgsConstructor
-@AllArgsConstructor
 public class Manager extends User {
 }

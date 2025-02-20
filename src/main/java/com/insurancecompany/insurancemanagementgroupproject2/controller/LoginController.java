@@ -3,6 +3,8 @@ package com.insurancecompany.insurancemanagementgroupproject2.controller;
  * @author team 5
  */
 import com.insurancecompany.insurancemanagementgroupproject2.DatabaseConnection;
+import com.insurancecompany.insurancemanagementgroupproject2.query.SQLField;
+import com.insurancecompany.insurancemanagementgroupproject2.query.SQLQueries;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -18,14 +20,13 @@ public class LoginController {
         Connection connection = databaseConnection.getConnection();
         // Perform logic to very file input, Catching exception
         try {
-            String verifyLoginQuery = "SELECT password, role_id FROM users WHERE user_name = ?";
-            PreparedStatement preparedStatement = connection.prepareStatement(verifyLoginQuery);
+            PreparedStatement preparedStatement = connection.prepareStatement(SQLQueries.FETCH_LOGIN);
             preparedStatement.setString(1, usernameTextField);
             ResultSet resultSet = preparedStatement.executeQuery();
             // Check value of password
             if (resultSet.next()) {
-                String hashedPasswordFromDB = resultSet.getString("password");
-                int roleId = resultSet.getInt("role_id");
+                String hashedPasswordFromDB = resultSet.getString(SQLField.PASSWORD);
+                int roleId = resultSet.getInt(SQLField.ROLE);
                 // Boolean for logic check
                 boolean passwordMatch = bcryptPassword.verifyHashedPassword(hashedPasswordFromDB, passwordField);
                 // Verify password
@@ -42,9 +43,7 @@ public class LoginController {
             return -1;
         } finally {
             try {
-                if (connection != null) {
                     connection.close();
-                }
             } catch (SQLException e) {
                 e.printStackTrace();
             }

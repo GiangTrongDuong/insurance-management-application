@@ -61,7 +61,11 @@ public class EditSurveyorForm {
     EventHandler<ActionEvent> submitForm = new EventHandler<ActionEvent>() {
         @Override
         public void handle(ActionEvent actionEvent) {
-            editSurveyor(idBox.getValue());
+            try {
+                editSurveyor(idBox.getValue());
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
         }
     };
     // Set event handler for choice box on click action
@@ -93,7 +97,7 @@ public class EditSurveyorForm {
     /*
      *  Method to check field inside text field then call controller to edit a surveyor
      */
-    private void editSurveyor(String id){
+    private void editSurveyor(String id) throws SQLException {
         //Validate field is not empty
         if (full_name.getText().isEmpty() ||  email.getText().isEmpty()
                 || phone_number.getText().isEmpty() || address.getText().isEmpty()) {
