@@ -1,6 +1,6 @@
 package com.insurancecompany.insurancemanagementgroupproject2;
 
-import com.insurancecompany.insurancemanagementgroupproject2.controller.SurveyorController;
+import com.insurancecompany.insurancemanagementgroupproject2.controller.surveyor.SurveyorController;
 import com.insurancecompany.insurancemanagementgroupproject2.model.Surveyor;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -29,7 +29,7 @@ class SurveyorControllerTest {
     public void setUp() {
         databaseConnection = mock(DatabaseConnection.class);
         connection = mock(Connection.class);
-        surveyorController = new SurveyorController(databaseConnection,connection);
+        surveyorController = new SurveyorController(databaseConnection);
     }
 
     @Test

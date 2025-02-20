@@ -5,7 +5,7 @@ package com.insurancecompany.insurancemanagementgroupproject2.view;
 import com.insurancecompany.insurancemanagementgroupproject2.DatabaseConnection;
 import com.insurancecompany.insurancemanagementgroupproject2.SceneLoader;
 import com.insurancecompany.insurancemanagementgroupproject2.controller.ClaimController;
-import com.insurancecompany.insurancemanagementgroupproject2.controller.SurveyorController;
+import com.insurancecompany.insurancemanagementgroupproject2.controller.surveyor.SurveyorController;
 import com.insurancecompany.insurancemanagementgroupproject2.model.Claim;
 import com.insurancecompany.insurancemanagementgroupproject2.model.LoginData;
 import com.insurancecompany.insurancemanagementgroupproject2.model.Surveyor;
@@ -18,6 +18,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
+import java.sql.SQLException;
 import java.util.*;
 
 public class ManagerHomePage extends SurveyorHomepage {
@@ -78,11 +79,11 @@ public class ManagerHomePage extends SurveyorHomepage {
      *  Initialize the pages upon opening pages
      */
     @FXML
-    private void initialize() {
+    private void initialize() throws SQLException {
         //Setup database connection
         DatabaseConnection databaseConnection = new DatabaseConnection();
         //Setup controller
-        surveyorController = new SurveyorController(databaseConnection,databaseConnection.getConnection());
+        surveyorController = new SurveyorController(databaseConnection);
         // Set up column widths and cell value factories
         claimTable.widthProperty().addListener((observable, oldValue, newValue) -> {
             double tableWidth = claimTable.getWidth();
@@ -137,7 +138,11 @@ public class ManagerHomePage extends SurveyorHomepage {
         @Override
         public void handle(ActionEvent actionEvent) {
             claimList = fetchClaimData();
-            fetchSurveyorData();
+            try {
+                fetchSurveyorData();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
         }
     };
 
@@ -158,7 +163,7 @@ public class ManagerHomePage extends SurveyorHomepage {
         return (Stage) createButton.getScene().getWindow();
     }
     //Function to call to surveyor Controller and fetch Surveyor data, then append to table
-    public void fetchSurveyorData(){
+    public void fetchSurveyorData() throws SQLException {
         ObservableList<Surveyor> surveyorObservableList = FXCollections.observableArrayList();
         surveyorList = surveyorController.fetchSurveyor();
         surveyorObservableList.addAll(surveyorList);

@@ -5,15 +5,16 @@ package com.insurancecompany.insurancemanagementgroupproject2.view;
 import com.insurancecompany.insurancemanagementgroupproject2.DatabaseConnection;
 import com.insurancecompany.insurancemanagementgroupproject2.SceneLoader;
 import com.insurancecompany.insurancemanagementgroupproject2.controller.BcryptPassword;
-import com.insurancecompany.insurancemanagementgroupproject2.controller.SurveyorController;
+import com.insurancecompany.insurancemanagementgroupproject2.controller.surveyor.SurveyorController;
 import com.insurancecompany.insurancemanagementgroupproject2.controller.ValidateInput;
-import com.insurancecompany.insurancemanagementgroupproject2.view.ManagerHomePage;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+
+import java.sql.SQLException;
 
 public class CreateSurveyorForm {
     @FXML
@@ -41,9 +42,15 @@ public class CreateSurveyorForm {
     @FXML
     private void initialize(){
         DatabaseConnection databaseConnection = new DatabaseConnection();
-        surveyorController = new SurveyorController(databaseConnection,databaseConnection.getConnection());
+        surveyorController = new SurveyorController(databaseConnection);
         // Set event handler for button on click action
-        submitSurveyor.setOnAction(ActionEvent -> createSurveyor());
+        submitSurveyor.setOnAction(actionEvent -> {
+            try {
+                createSurveyor();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        });
         ManagerHomePage managerHomePage = new ManagerHomePage();
         id = managerHomePage.createSurveyorID();
         bcryptPassword = new BcryptPassword();
@@ -54,7 +61,7 @@ public class CreateSurveyorForm {
     /*
      *  Method to check field inside text field then call controller to create new surveyor
      */
-    private void createSurveyor(){
+    private void createSurveyor() throws SQLException {
         // Validate input not empty
         if (full_name.getText().isEmpty() || username.getText().isEmpty() || password.getText().isEmpty() || email.getText().isEmpty()
                 || phone_number.getText().isEmpty() || address.getText().isEmpty()) {

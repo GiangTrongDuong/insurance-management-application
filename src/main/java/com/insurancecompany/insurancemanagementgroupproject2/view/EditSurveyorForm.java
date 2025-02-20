@@ -4,7 +4,7 @@ package com.insurancecompany.insurancemanagementgroupproject2.view;
  */
 import com.insurancecompany.insurancemanagementgroupproject2.DatabaseConnection;
 import com.insurancecompany.insurancemanagementgroupproject2.SceneLoader;
-import com.insurancecompany.insurancemanagementgroupproject2.controller.SurveyorController;
+import com.insurancecompany.insurancemanagementgroupproject2.controller.surveyor.SurveyorController;
 import com.insurancecompany.insurancemanagementgroupproject2.controller.ValidateInput;
 import com.insurancecompany.insurancemanagementgroupproject2.model.Surveyor;
 import javafx.collections.FXCollections;
@@ -15,6 +15,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,9 +44,9 @@ public class EditSurveyorForm {
      *  Initialize the pages upon opening pages, create controller and local variable
      */
     @FXML
-    private void initialize(){
+    private void initialize() throws SQLException {
         DatabaseConnection databaseConnection = new DatabaseConnection();
-        surveyorController = new SurveyorController(databaseConnection, databaseConnection.getConnection());
+        surveyorController = new SurveyorController(databaseConnection);
         ObservableList<String> surveyorsID= FXCollections.observableArrayList();
         surveyorList = surveyorController.fetchSurveyor();
         surveyorsID.setAll(getID(surveyorList));
