@@ -25,6 +25,6 @@ public class InsuranceCard {
     @Column("expiration_date")
     private Date expirationDate;
 
-    @Column("policy_holder_id")
+    @Column("policy_owner_id")
     private String policyOwnerId;
 }

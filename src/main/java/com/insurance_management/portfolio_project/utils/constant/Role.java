@@ -2,10 +2,8 @@ package com.insurance_management.portfolio_project.utils.constant;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.Setter;
 import org.springframework.stereotype.Component;
 
-@Component
 @Getter
 @AllArgsConstructor
 public enum Role {
@@ -16,6 +14,6 @@ public enum Role {
     POLICY_HOLDER(5, "policy holder"),
     DEPENDENT(6, "dependent");
 
-    private final int id;
+    private final Integer id;
     private final String roleName;
 }
