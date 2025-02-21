@@ -1,93 +1,102 @@
+# Insurance Claims Management System (Portfolio Project)
 
-# COSC2440 Group Assignment 2
-----
-## Overview:
-Welcome to the Insurance Claims Management System. This platform is designed to facilitate the management, tracking, and processing of insurance claims with a focus on ease of use and efficiency. The system accommodates different user roles, each with distinct responsibilities, to ensure seamless operation and comprehensive support for all users.
+## Overview
+This repository is a **fork of the original COSC2440 Group Assignment 2**, now repurposed as a **portfolio project** to showcase our technical skills in **Spring Boot, Hibernate, JPA, Lombok, and Angular**. It retains the same contributors and aims to **demonstrate expertise in full-stack development** while refining and expanding upon the original system.
 
-## Technical
-This project use Java and JavaFX library to build, Junit 5 for unit test and requrie JavaSDK 22.
-## Team 5 group members:
-- [Giang Trong Duong](https://github.com/GiangTrongDuong)
-- [Min Chi Gia Khiem](https://github.com/khiemmin2002)
-- [Nguyen A Luy](https://github.com/NguyenALuy)
-- [Nguyen Huynh Quang](https://github.com/nguyenhuynhquang2909)
-
-## Team contribution
-- Giang Trong Duong: 3 points
-- Min Chi Gia Khiem: 3 points
-- Nguyen A Luy: 3 points
-- Nguyen Huynh Quang: 3 points
+The **Insurance Claims Management System** provides a robust and user-friendly platform for managing, tracking, and processing insurance claims. With a structured **role-based access control system**, it ensures efficient claim handling for different user roles, including **policyholders, insurance managers, and surveyors**.
 
 ---
 
-## Test account for database:
-### System Admin
-`username`: admin
-
-`password`: admin123
-
-### Policy Owner
-`username`: nguyenvanb283
-
-`password`: nguyenvanb283
-
-### Policy Holder
-`username`: declanriceARS41
-
-`password`: declanriceARS41
-
-### Dependent
-`username`: tomiyasuARS18
-
-`password`: tomiyasuARS18
-
-### Insurance Manager
-`username`: nguyenvanc433
-
-`password`: nguyenvanc433
-
-### Insurance Surveyor
-`username`: vanthang
-
-`password`: vanthang123
+## 🔧 Tech Stack
+- **Backend:** Spring Boot, Hibernate, JPA, Lombok
+- **Frontend:** Angular
+- **Database:** PostgreSQL
+- **Testing:** JUnit 5
+- **Build Tools:** Maven
+- **Version Control:** Git, GitHub
 
 ---
-# System Overview
-## User Roles and Responsibilities:
 
-### Customer:
+## 📌 Features
 
-- Policy Holder: File/update/retrieve own and dependent claims, update personal information (phone, address, email, password).
+### **Authentication & Authorization**
+- Secure login system with role-based access control.
+- Password encryption and user authentication.
 
-- Dependent: Retrieve personal claims and information.
+### **Claim Management**
+- File, update, and retrieve insurance claims.
+- Upload claim documents (images) with proper validation and renaming.
+- Approval/rejection process for claims.
 
-- Policy Owner: File/update/delete/retrieve claims of beneficiaries, add/update/remove/get beneficiaries. Calculate yearly insurance cost.
+### **User Management**
+- CRUD operations for users (System Admin only).
+- Policy Owner functionalities: managing beneficiaries, calculating yearly insurance costs.
+- Insurance Surveyor functionalities: requesting additional claim details, filtering claims.
+- Insurance Manager functionalities: approving/rejecting claims, managing surveyors.
 
-### Provider:
+### **System Administration**
+- Manage users, roles, and permissions.
+- Generate reports on successfully claimed amounts with filtering options.
 
-- Insurance Surveyor: Request more information, propose claims to managers, retrieve claims and customers with filtering options.
+---
 
-- Insurance Manager: Approve/reject proposed claims, retrieve claims and customers with filtering options, get information of surveyors.
+## 🛠 Setup & Installation
 
-### System Admin:
+### **Prerequisites**
+- Java 17+
+- Node.js & Angular CLI (for frontend)
+- PostgreSQL database
+- Maven
 
-- CRUD operations on all entities except claims (retrieve only).
+### **Backend Setup**
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/insurance-claims-portfolio.git
+   cd insurance-claims-portfolio/backend
+   ```
+2. Configure PostgreSQL database in `application.properties`:
+   ```properties
+   spring.datasource.url=jdbc:postgresql://localhost:5432/insurance_db
+   spring.datasource.username=your_db_user
+   spring.datasource.password=your_db_password
+   ```
+3. Build and run the Spring Boot application:
+   ```bash
+   mvn clean install
+   mvn spring-boot:run
+   ```
 
-- Calculate total successfully claimed amount with filtering options.
+### **Frontend Setup**
+1. Navigate to the frontend directory:
+   ```bash
+   cd ../frontend
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the Angular app:
+   ```bash
+   ng serve
+   ```
 
-## System Functionalities:
+---
 
-- Login System with role-based authorization.
+## 👥 Contributors
+- **Giang Trong Duong**
+- **Min Chi Gia Khiem**
+- **Nguyen A Luy**
+- **Nguyen Huynh Quang**
 
-## Claim Management:
+This project builds upon our previous work in **Group Assignment 2** and enhances it for personal portfolio use.
 
-- File, update, retrieve, and manage claims based on user role.
+---
 
-- Upload claim documents (images) with specified format renaming.
+## 📝 License
+This project is for **educational and portfolio purposes**. It is not intended for commercial use.
 
-## User Management:
+---
 
-- Update user information (limited based on role).
-
-- Policy Owner specific functionalities (beneficiary management, yearly cost calculation). 
+## 📩 Contact
+For any inquiries or collaboration opportunities, feel free to reach out via GitHub or LinkedIn.
 

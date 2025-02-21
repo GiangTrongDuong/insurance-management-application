@@ -67,7 +67,7 @@ public class InsuranceCardServiceImpl implements InsuranceCardService {
         Optional<InsuranceCard> insuranceCardOptional = insuranceCardRepository.findByCardNumber(cardNumber);
 
         if (insuranceCardOptional.isEmpty()){
-            throw new IllegalArgumentException(ErrorConstant.NOT_FOUND_EXCEPTION);
+            throw new NotFoundException(ErrorConstant.CARD_NOT_FOUND_EXCEPTION);
         }
 
         InsuranceCard insuranceCardToUpdate = insuranceCardOptional.get();
@@ -92,7 +92,7 @@ public class InsuranceCardServiceImpl implements InsuranceCardService {
         Optional<InsuranceCard> insuranceCardOptional = insuranceCardRepository.findByCardNumber(cardNumber);
 
         if (insuranceCardOptional.isEmpty()){
-            throw new IllegalArgumentException(ErrorConstant.NOT_FOUND_EXCEPTION);
+            throw new NotFoundException(ErrorConstant.CARD_NOT_FOUND_EXCEPTION);
         }
 
         InsuranceCard insuranceCardToDelete = insuranceCardOptional.get();
