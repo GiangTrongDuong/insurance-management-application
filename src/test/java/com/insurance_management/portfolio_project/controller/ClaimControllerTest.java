@@ -1,6 +1,6 @@
 package com.insurance_management.portfolio_project.controller;
 
-import com.insurance_management.portfolio_project.repositories.ClaimRepositories;
+import com.insurance_management.portfolio_project.repositories.jdbc.ClaimRepositories;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;

@@ -1,30 +1,41 @@
 package com.insurance_management.portfolio_project.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import org.springframework.data.relational.core.mapping.Column;
-import org.springframework.data.relational.core.mapping.Table;
+import com.insurance_management.portfolio_project.model.id.CardNumberId;
+import jakarta.annotation.Nonnull;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.*;
 
 import java.sql.Date;
 
-@Getter
-@Setter
-@NoArgsConstructor
+@Data
+@EqualsAndHashCode
+@ToString
+@Entity
 @AllArgsConstructor
-@Table("insurance_card")
+@NoArgsConstructor
+@Table(name="insurance_card")
 public class InsuranceCard {
 
-    @Column("card_number")
-    private String cardNumber;
+    @Id
+    @CardNumberId
+    @Column(name="card_number")
+    private Long cardNumber;
 
-    @Column("card_holder_id")
+    @Column(name="card_holder_id")
     private String cardHolderId;
 
-    @Column("expiration_date")
+    @Column(name="expiration_date")
     private Date expirationDate;
 
-    @Column("policy_owner_id")
+    @Column(name="policy_owner_id")
     private String policyOwnerId;
+
+    public InsuranceCard(String cardHolderId, Date expirationDate, String policyOwnerId) {
+        this.cardHolderId = cardHolderId;
+        this.expirationDate = expirationDate;
+        this.policyOwnerId = policyOwnerId;
+    }
 }

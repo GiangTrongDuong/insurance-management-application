@@ -3,15 +3,17 @@ package com.insurance_management.portfolio_project.utils;
  * @author team 5
  */
 
-import org.springframework.beans.factory.annotation.Value;
+import com.insurance_management.portfolio_project.utils.constant.DebuggingConstant;
 import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.logging.Logger;
 
 @Component
 public class DatabaseConnection {
+    private static final Logger logger = Logger.getLogger(DatabaseConnection.class.getName());
     private final DataSource dataSource;
 
     public DatabaseConnection(DataSource dataSource) {
@@ -20,17 +22,17 @@ public class DatabaseConnection {
 
     public Connection getConnection() {
         try {
-            return dataSource.getConnection(); // ✅ Uses Spring-managed connection
+            return dataSource.getConnection();
         } catch (SQLException e) {
-            throw new IllegalStateException("❌ Error connecting to the database", e);
+            throw new IllegalStateException(DebuggingConstant.CONNECT_FAIL, e);
         }
     }
 
     public void testConnection() {
         try (Connection conn = getConnection()) {
-            System.out.println("✅ Successfully connected to the database!");
+            logger.info(DebuggingConstant.CONNECT_SUCCESS);
         } catch (Exception e) {
-            System.err.println("❌ Database connection failed: " + e.getMessage());
+            logger.info(DebuggingConstant.CONNECT_FAIL + e.getMessage());
         }
     }
 }

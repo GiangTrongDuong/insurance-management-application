@@ -1,40 +1,42 @@
 package com.insurance_management.portfolio_project.model;
 
+import jakarta.persistence.*;
 import lombok.*;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.Column;
-import org.springframework.data.relational.core.mapping.Table;
+import lombok.experimental.SuperBuilder;
 
-    @Setter
-    @Getter
-    @NoArgsConstructor
-    @AllArgsConstructor
-    @Table("users")
-    public class User {
+@Data
+@EqualsAndHashCode
+@Inheritance(strategy = InheritanceType.JOINED)
+@Entity
+@SuperBuilder
+@AllArgsConstructor
+@NoArgsConstructor
+@Table(name="users")
+public class User {
 
-        @Id
-        @Generated
-        @Column("id")
-        private String id;
+    @Id
+    @Generated
+    @Column(name="id")
+    private String id;
 
-        @Column("full_name")
-        private String fullName;
+    @Column(name="full_name")
+    private String fullName;
 
-        @Column("user_name")
-        private String userName;
+    @Column(name="user_name")
+    private String userName;
 
-        @Column("password")
-        private String password;
+    @Column(name="password")
+    private String password;
 
-        @Column("email")
-        private String email;
+    @Column(name="email")
+    private String email;
 
-        @Column("phone_number")
-        private String phoneNumber;
+    @Column(name="phone_number")
+    private String phoneNumber;
 
-        @Column("address")
-        private String address;
+    @Column(name="address")
+    private String address;
 
-        @Column("role_id")
-        private int roleId;
+    @Column(name="role_id")
+    private int roleId;
 }
