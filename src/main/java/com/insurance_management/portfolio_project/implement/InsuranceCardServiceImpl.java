@@ -1,6 +1,6 @@
 package com.insurance_management.portfolio_project.implement;
 
-import com.insurance_management.portfolio_project.data_transfer_object.InsuranceCardRequest;
+import com.insurance_management.portfolio_project.data_transfer_object.InsuranceCardDTO;
 import com.insurance_management.portfolio_project.model.InsuranceCard;
 import com.insurance_management.portfolio_project.repositories.jdbc.InsuranceCardRepository;
 import com.insurance_management.portfolio_project.service.InsuranceCardService;
@@ -22,7 +22,7 @@ public class InsuranceCardServiceImpl implements InsuranceCardService {
 
     @Transactional
     @Override
-    public InsuranceCard saveInsuranceCard(InsuranceCardRequest requestBody) {
+    public InsuranceCard saveInsuranceCard(InsuranceCardDTO requestBody) {
         InsuranceCard insuranceCardInsert = new InsuranceCard(
                 requestBody.getCardHolderId(),
                 requestBody.getExpirationDate(),

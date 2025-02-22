@@ -1,18 +1,19 @@
 package com.insurance_management.portfolio_project.data_transfer_object;
 
 import lombok.Data;
-import org.antlr.v4.runtime.misc.NotNull;
+import org.checkerframework.checker.nullness.qual.NonNull;
 
 import java.sql.Date;
 
 @Data
-public class InsuranceCardRequest {
-    @NotNull
+public class InsuranceCardDTO {
+
+    @NonNull
     private String cardHolderId;
 
-    @NotNull
+    @NonNull
     private Date expirationDate;
 
-    @NotNull
+    @NonNull
     private String policyOwnerId;
 }

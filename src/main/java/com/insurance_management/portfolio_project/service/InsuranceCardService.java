@@ -1,6 +1,6 @@
 package com.insurance_management.portfolio_project.service;
 
-import com.insurance_management.portfolio_project.data_transfer_object.InsuranceCardRequest;
+import com.insurance_management.portfolio_project.data_transfer_object.InsuranceCardDTO;
 import com.insurance_management.portfolio_project.model.InsuranceCard;
 
 import java.sql.Date;
@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface InsuranceCardService {
     // POST
-    InsuranceCard saveInsuranceCard(InsuranceCardRequest insuranceCard);
+    InsuranceCard saveInsuranceCard(InsuranceCardDTO insuranceCard);
     // GET
     List<InsuranceCard> fetchAllInsuranceCardList();
     // GET (by card number)

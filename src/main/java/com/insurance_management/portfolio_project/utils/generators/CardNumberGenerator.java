@@ -34,7 +34,7 @@ public class CardNumberGenerator implements BeforeExecutionGenerator {
         Connection connection = null;
         try {
             connection = session.getJdbcConnectionAccess().obtainConnection();
-            Long generatedId = 0L;
+            long generatedId = 0L;
             boolean isUnique = false;
 
             while (!isUnique) {

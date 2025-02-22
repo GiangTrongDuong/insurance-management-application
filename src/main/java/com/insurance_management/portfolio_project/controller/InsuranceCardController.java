@@ -1,6 +1,6 @@
 package com.insurance_management.portfolio_project.controller;
 
-import com.insurance_management.portfolio_project.data_transfer_object.InsuranceCardRequest;
+import com.insurance_management.portfolio_project.data_transfer_object.InsuranceCardDTO;
 import com.insurance_management.portfolio_project.model.InsuranceCard;
 import com.insurance_management.portfolio_project.service.InsuranceCardService;
 import lombok.AllArgsConstructor;
@@ -25,7 +25,7 @@ public class InsuranceCardController {
 
     @PostMapping("/create")
     public InsuranceCard createInsuranceCard(
-            @RequestBody InsuranceCardRequest insuranceCard
+            @RequestBody InsuranceCardDTO insuranceCard
     ) {return insuranceCardService.saveInsuranceCard(insuranceCard);}
 
     @DeleteMapping("/delete/{card_number}")
